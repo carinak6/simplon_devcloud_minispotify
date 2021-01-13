@@ -1,0 +1,19 @@
+body{
+    background-color: rgb(83, 83, 211);
+    margin: 0 auto;
+}
+
+h1, div{
+    text-align: center;
+
+}
+div{
+    width : 100%;
+}
+audio{
+    height: 20px;
+}
+li{
+    list-style: none;
+    
+}
