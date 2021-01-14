@@ -3,17 +3,45 @@ body{
     margin: 0 auto;
 }
 
-h1, div{
+h1{
     text-align: center;
 
 }
 div{
     width : 100%;
 }
-audio{
-    height: 20px;
-}
+
 li{
     list-style: none;
-    
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+#listeMusique{
+    display: flex;
+    flex-direction: column;
+    justify-content:left ;
+}
+
+nav{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: baseline;
+}
+
+main{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+audio{
+    height: 40px;
+}
+
+
+audio{
+    margin-top: 40%;
+    text-align: center;
+    vertical-align: baseline;
+    /*background-color: red;*/
 }

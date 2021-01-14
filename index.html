@@ -7,26 +7,35 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <h1>Ma Liste des chanson Preferé</h1>
-    <div>
+    <nav>
+        <label id="logo">Ma Play Liste</label>
         <ul>
-            <li>Queen - Bohemian Rhapsody
-                <audio controls>                    
-                    <source src="./mp3/Bohemian Rhapsody.flac" type="audio/ogg">
-                Your browser does not support the audio element.
-                </audio>
-            </li>
-            <li>Johnny Hallyday - Allumer le feu</li>
-            <li>Alain Souchon - Foule sentimentale</li>
-            <li>Le bolero de Ravel</li>
-            <li>Pascal Obispo - Lucie</li>
-            <li>Sting - Desert Rose </li>
+            <li>Ajouter</li>
         </ul>
-            <!-- https://youtu.be/C3lWwBslWqg -->
-           
+    </nav>
+    <main>
+        <section>
+            <h1>Ma Liste des chanson Preferé</h1>
+            <div>
+                <ul id="listeMusique">
+                    <li id="chanson1">Queen - Bohemian Rhapsody</li>
+                    <li id="chanson2">Johnny Hallyday - Allumer le feu</li>
+                    <li id="chanson3">Alain Souchon - Foule sentimentale</li>
+                    <li id="chanson4">Le bolero de Ravel</li>
+                    <li id="chanson5">Pascal Obispo - Lucie</li>
+                    <li id="chanson6">Polnareff - Lettre a France </li>
+                </ul>   
+            </div>
+        </section>
+        <section>
+             <audio id="boutonPlay" controls>                    
+                <source  src="" type="audio/ogg">
+                Your browser does not support the audio element.
+            </audio>
+        </section>
        
-    </div>
+    </main>
+    
     
     <script src="script.js"></script>
 </body>
