@@ -1,4 +1,8 @@
-//clique sur chaque chanson
+/**
+ * Bloque clique sur chaque chanson, mais on pourrai factoriser ça, avec des tableau, etc
+ * mais je laisse pour le moment comme ça
+ */
+
 document.getElementById("chanson1").addEventListener("click", function(){    
     //console.log(this);
     
@@ -31,7 +35,9 @@ document.getElementById("chanson6").addEventListener("click", function(){
     jouerChanson("./mp3/polnareff-lettre-a-france-original-version.mp3");
 });
 
-//function qui joue la musique
+/**
+ * function qui joue la musique
+ */
 function jouerChanson(chanson) {
     //il change le attribute source de la balise audio
     document.querySelector("#boutonPlay").setAttribute('src',chanson);    
@@ -43,17 +49,21 @@ function jouerChanson(chanson) {
     document.querySelector("#boutonPlay").play();
 }
 
-/*change le couleur de liste avec chaque click */
+
+/*
+* change le couleur de liste avec chaque click 
+*/
 function changerCouleur(itemChoisie) {    
 
     /* pour enlever le background des items deja selectione
-    mais peut etre on peut utiliser un changement de class
+    mais peut etre on peut utiliser un changement de nom de class qui aura le background souhaité
     */
     toutes = document.querySelectorAll("ul#listeMusique>li");
     toutes.forEach(element => {
         element.style.backgroundColor="";
     });
     
-    itemChoisie.style.backgroundColor ="violet";
+    //je modifie le background selectionné
+    itemChoisie.style.backgroundColor ='rgb(88, 168, 175)';
 
 }
