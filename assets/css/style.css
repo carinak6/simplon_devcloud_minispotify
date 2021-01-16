@@ -147,6 +147,7 @@ table td, table th {
 .artiste{
     width: 40%;
 }
-/*.temps{
-    width: 5%;
-}*/
+.temps{
+   /* width: 5%;*/
+   text-align: right;
+}

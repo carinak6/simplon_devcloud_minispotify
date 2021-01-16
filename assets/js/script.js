@@ -1,11 +1,11 @@
 //liste des chanson avec le titre, son fichier audio et l image qui l acompagne
 listeChanson=[
-['Bohemian Rhapsody','Queen','Bohemian Rhapsody.flac','queen.jpg'],
-["Allumer le feu",'Johnny Hallyday',"100 - Johnny Hallyday - Allumer le feu.mp3","johnny.jpg"],
-["Foule sentimentale","Alain Souchon","alain-souchon-foule-sentimentale.mp3","AlainSouchon.jpg"],
-["Le bolero de Ravel","-","maurice-ravel-bolero.mp3","bolero.jpg"], 
-["Lucie","Pascal Obispo", "pascal-obispo-lucie-clip-officiel.mp3","obispo.jpg"],
-["Lettre a France","Polnareff","polnareff-lettre-a-france-original-version.mp3","polnareff.jpg"]
+['Bohemian Rhapsody','Queen','Bohemian Rhapsody.flac','queen.jpg','5:54'],
+["Allumer le feu",'Johnny Hallyday',"100 - Johnny Hallyday - Allumer le feu.mp3","johnny.jpg","4:21"],
+["Foule sentimentale","Alain Souchon","alain-souchon-foule-sentimentale.mp3","AlainSouchon.jpg","5:51"],
+["Le bolero de Ravel","-","maurice-ravel-bolero.mp3","bolero.jpg","15:28"], 
+["Lucie","Pascal Obispo", "pascal-obispo-lucie-clip-officiel.mp3","obispo.jpg","4:12"],
+["Lettre a France","Polnareff","polnareff-lettre-a-france-original-version.mp3","polnareff.jpg","4:50"]
 ];
 
 
@@ -20,7 +20,7 @@ let listeMusique="";
 for(let i = 0 ; i < listeChanson.length; i++){    
     //listeMusique += "<li id=\""+ i +"\">"+(i+1)+" - <i class=\"far fa-heart\"></i> <label class='chanson'>"+listeChanson[i][0]+"</label></li> ";
     
-    listeMusique += "<tr> <td class='nro' >"+ (i+1) +"</td><td class='coeur'><i class=\"far fa-heart\"></i></td><td class='chanson titre'>"+listeChanson[i][0]+"</td><td class='artiste'>"+ listeChanson[i][1]+ "</td><td class='temps'>3:00</td></tr>";
+    listeMusique += "<tr> <td class='nro' >"+ (i+1) +"</td><td class='coeur'><i class=\"far fa-heart\"></i></td><td class='chanson titre'>"+listeChanson[i][0]+"</td><td class='artiste'>"+ listeChanson[i][1]+ "</td><td class='temps'>"+ listeChanson[i][4]+ "</td></tr>";
 }
 console.log(listeMusique)
 //on ajoute la variable avec les LI dans la balise UL#listeMusique
