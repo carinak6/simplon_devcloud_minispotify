@@ -17,6 +17,11 @@ li{
     padding: 10px;
 }
 
+a{
+    text-decoration: none;
+    color:black
+}
+
 #listeMusique{
     display: flex;
     flex-direction: column;
@@ -32,7 +37,8 @@ nav{
 
 main{
     display: flex;
-    justify-content: space-evenly;
+    /*justify-content: space-evenly;*/
+    justify-content: space-around;
 }
 
 audio{
@@ -41,7 +47,7 @@ audio{
 
 
 audio{
-    /*margin-top: 60%;*/
+    margin-top: 10px;
     width: 100%;
     text-align: center;
     vertical-align: baseline;
@@ -49,10 +55,19 @@ audio{
 }
 
 section{
-    border-style: groove;
+    /*border-style: groove;
+    border:solid 1px rgb(238, 232, 232);*/
     padding: 20px;
     margin-top: 30px;
-    border-radius: rgb(94, 174, 177) 1px ;
+    border: solid 1px rgb(83, 111, 112)  ;
     width: 100%;
     margin-bottom: 5px;
+    margin-left: 20px;
 }
+
+section:nth-child(2){
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between ;
+}
+

@@ -1,5 +1,6 @@
-//liste des chanson avec le titre et son fichier audio
-listeChanson=[['Queen - Bohemian Rhapsody','Bohemian Rhapsody.flac','queen.jpg'],
+//liste des chanson avec le titre, son fichier audio et l image qui l acompagne
+listeChanson=[
+['Queen - Bohemian Rhapsody','Bohemian Rhapsody.flac','queen.jpg'],
 ["Johnny Hallyday - Allumer le feu","100 - Johnny Hallyday - Allumer le feu.mp3","johnny.jpg"],
 ["Alain Souchon - Foule sentimentale","alain-souchon-foule-sentimentale.mp3","AlainSouchon.jpg"],
 ["Le bolero de Ravel","maurice-ravel-bolero.mp3","bolero.jpg"], 
@@ -7,6 +8,8 @@ listeChanson=[['Queen - Bohemian Rhapsody','Bohemian Rhapsody.flac','queen.jpg']
 ["Polnareff - Lettre a France","polnareff-lettre-a-france-original-version.mp3","polnareff.jpg"]
 ];
 
+
+/************ generation de liste des chanson  dynamiquement **************/
 //on capte la balise ul
 listeChansons = document.querySelector("#listeMusique");
 
@@ -15,25 +18,47 @@ let listeMusique="";
 
 //on cree la liste des chanson
 for(let i = 0 ; i < listeChanson.length; i++){    
-    listeMusique += "<li id=\""+ i +"\">"+(i+1)+" - <i class=\"fab fa-accessible-icon\"></i> "+listeChanson[i][0]+"</li> ";
+    listeMusique += "<li id=\""+ i +"\">"+(i+1)+" - <i class=\"far fa-heart\"></i> <label class='chanson'>"+listeChanson[i][0]+"</label></li> ";
 }
 //on ajoute la variable avec les LI dans la balise UL#listeMusique
 listeChansons.innerHTML =listeMusique;
 
-//on capte toutes les balises li crée anteriorment
-listLi= document.querySelectorAll("#listeMusique>li");
 
-//on parcours tous le LI et on lui applique l'evenement click pour chaque
-for(let x in listLi){
-    console.log(x);
-    document.getElementById(x).addEventListener("click", function(){ 
+/************* des label avec les chansons ****************/
+//on capte toutes les balises li crée anteriorment
+listLabel= document.querySelectorAll(".chanson");
+console.log(listLabel);
+
+//on parcours tous les labels dans li et on lui applique l'evenement click pour chaque
+//for(let x in listLi){//x c est le item ou index de l'array, c est plutot pour les objet
+listLabel.forEach((valeur, index)=>{
+    console.log(index);
+    console.log(valeur);
+
+    //j applique à chaque label l'event click
+    valeur.addEventListener("click", function(){ 
         changerCouleur(this);
-        console.log(listeChanson[x][1]);
-        jouerChanson(listeChanson[x][1],listeChanson[x][2]);
+        
+        jouerChanson(listeChanson[index][1],listeChanson[index][2]);
     });
    
-}
+});
 
+
+/*************** Gestion des coeurs ****************/
+listCoeur= document.querySelectorAll(".fa-heart");
+//on parcours tous les labels dans li et on lui applique l'evenement click pour chaque
+listCoeur.forEach((valeur, index)=>{
+    console.log(index);
+    console.log(valeur);
+
+    //j applique à chaque icon l'event click pour changer sa class et par ende l image
+    valeur.addEventListener("click", function(elem){ 
+        console.log(elem.target);
+        elem.target.setAttribute('class','fas fa-heart')
+    });
+   
+});
 
 /**
  * function qui joue la musique
@@ -57,7 +82,7 @@ function jouerChanson(chanson, imgChanteur) {
 * change le couleur de liste avec chaque click 
 */
 function changerCouleur(itemChoisie) {    
-
+    
     /* pour enlever le background des items deja selectione
     mais peut etre on peut utiliser un changement de nom de class qui aura le background souhaité
     */
@@ -67,6 +92,6 @@ function changerCouleur(itemChoisie) {
     });
     
     //je modifie le background selectionné
-    itemChoisie.style.backgroundColor ='rgb(88, 168, 175)';
+    itemChoisie.parentNode.style.backgroundColor ='rgb(88, 168, 175)';
 
 }
