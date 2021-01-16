@@ -24,7 +24,7 @@ li{
 }
 
 nav{
-    background-color: rgb(204, 237, 240);
+    background-color: rgb(54, 131, 138);
     display: flex;
     justify-content: space-evenly;
     align-items: baseline;
@@ -41,8 +41,18 @@ audio{
 
 
 audio{
-    margin-top: 40%;
+    /*margin-top: 60%;*/
+    width: 100%;
     text-align: center;
     vertical-align: baseline;
     /*background-color: red;*/
+}
+
+section{
+    border-style: groove;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: rgb(94, 174, 177) 1px ;
+    width: 100%;
+    margin-bottom: 5px;
 }
