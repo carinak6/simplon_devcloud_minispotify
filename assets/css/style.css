@@ -142,11 +142,17 @@ table td, table th {
     text-align: center;
 }
 .titre{
-    width: 40%;
+    width: 35%;
 }
 .artiste{
     width: 40%;
 }
+
+.play{
+    width: 10%;
+    text-align: center;
+}
+
 .temps{
    /* width: 5%;*/
    text-align: right;

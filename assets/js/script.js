@@ -20,11 +20,11 @@ let listeMusique="";
 for(let i = 0 ; i < listeChanson.length; i++){    
     //listeMusique += "<li id=\""+ i +"\">"+(i+1)+" - <i class=\"far fa-heart\"></i> <label class='chanson'>"+listeChanson[i][0]+"</label></li> ";
     
-    listeMusique += "<tr> <td class='nro' >"+ (i+1) +"</td><td class='coeur'><i class=\"far fa-heart\"></i></td><td class='chanson titre'>"+listeChanson[i][0]+"</td><td class='artiste'>"+ listeChanson[i][1]+ "</td><td class='temps'>"+ listeChanson[i][4]+ "</td></tr>";
+    listeMusique += "<tr> <td class='nro' >"+ (i+1) +"</td><td class='coeur'><i class=\"far fa-heart\"></i></td><td class='chanson titre'>"+listeChanson[i][0]+"</td><td class='play'><i class='fas fa-play-circle'></i></td><td class='artiste'>"+ listeChanson[i][1]+ "</td><td class='temps'>"+ listeChanson[i][4]+ "</td></tr>";
 }
 console.log(listeMusique)
 //on ajoute la variable avec les LI dans la balise UL#listeMusique
-listeChansons.innerHTML += "<tr><th class='nro'>#</th><th class='coeur'></th><th class='titre'>Titre</th><th class='artiste'>Artiste</th><th class='temps'><i class=\"fas fa-stopwatch\"></i></th></tr><tbody>"+ listeMusique +'</tbody>';
+listeChansons.innerHTML += "<tr><th class='nro'>#</th><th class='coeur'></th><th class='titre'>Titre</th><th class='play'></th><th class='artiste'>Artiste</th><th class='temps'><i class=\"fas fa-stopwatch\"></i></th></tr><tbody>"+ listeMusique +'</tbody>';
 
 
 /************* des label avec les chansons ****************/
@@ -41,8 +41,8 @@ listLabel.forEach((valeur, index)=>{
     //j applique à chaque label l'event click
     valeur.addEventListener("click", function(){ 
         changerCouleur(this);
-        console.log(this);
-        jouerChanson(listeChanson[index][2],listeChanson[index][3]);
+        //console.log(this);
+        jouerChanson(listeChanson[index][2],listeChanson[index][3]);//j'appele la function jouer avec le paramettres
     });
    
 });
@@ -67,6 +67,34 @@ listCoeur.forEach((valeur, index)=>{
     });
    
 });
+
+
+/*************** Gestion des Plays ****************/
+listPlays= document.querySelectorAll(".fa-play-circle");
+//on parcours tous les labels dans li et on lui applique l'evenement click pour chaque
+listPlays.forEach((valeur, index)=>{
+    console.log(index);
+    console.log(valeur);
+
+    //j applique à chaque icon l'event click pour changer sa class et par ende l image
+    valeur.addEventListener("click", function(elem){ //element c est l objet MouseEvent
+        console.log(elem.target);//element clique avec le .target je peut le capter
+        if(elem.target.className == 'fas fa-play-circle' ){
+            elem.target.setAttribute('class','far fa-play-circle');
+            let nro=elem.target.parentNode.parentNode.children[0].innerHTML;//je reçois le premier element fils de la ligne tr, c est le nro
+            console.log(nro);
+            document.querySelectorAll(".chanson")[nro-1].click();//je declanche le clique sur le titre de la chanson
+        }else{
+            elem.target.setAttribute('class','fas fa-play-circle');
+            
+        }
+        
+       /*TO DO : continuer avec l evenement clique sur les play que soit desactivé dans les autres*/
+        
+    });
+   
+});
+
 
 /**
  * function qui joue la musique
@@ -95,9 +123,9 @@ function changerCouleur(itemChoisie) {
     mais peut etre on peut utiliser un changement de nom de class qui aura le background souhaité
     */
     toutes = document.querySelectorAll("table#listeMusique>tbody>tr");
-    console.log(toutes)
+    //console.log(toutes)
     toutes.forEach(element => {
-        console.log(element);        
+        //console.log(element);        
         element.style.backgroundColor="";
     });
     
