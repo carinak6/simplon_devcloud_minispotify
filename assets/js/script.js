@@ -3,9 +3,16 @@ listeChanson=[
 ['Bohemian Rhapsody','Queen','Bohemian Rhapsody.flac','queen.jpg','5:54'],
 ["Allumer le feu",'Johnny Hallyday',"100 - Johnny Hallyday - Allumer le feu.mp3","johnny.jpg","4:21"],
 ["Foule sentimentale","Alain Souchon","alain-souchon-foule-sentimentale.mp3","AlainSouchon.jpg","5:51"],
-["Le bolero de Ravel","-","maurice-ravel-bolero.mp3","bolero.jpg","15:28"], 
+["Le bolero de Ravel","Maurice Ravel","maurice-ravel-bolero.mp3","bolero.jpg","15:28"], 
 ["Lucie","Pascal Obispo", "pascal-obispo-lucie-clip-officiel.mp3","obispo.jpg","4:12"],
-["Lettre a France","Polnareff","polnareff-lettre-a-france-original-version.mp3","polnareff.jpg","4:50"]
+//["Lettre a France","Polnareff","polnareff-lettre-a-france-original-version.mp3","polnareff.jpg","4:50"],
+["Fantasy","Earth, Wind & Fire","Fantasy.mp3","fantasy.jpg","3:43"],
+["Virtual Insanity","Jamiroquai","Jamiroquai--VirtualInsanity.mp3","jamiroquai.jpg","4:02"],
+['La Bilirrubina',"Juan Luis Guerra","JuanLuisGuerra-LaBilirrubina.mp3","labilirrubina-juanluisguerra.jpg","3:55"],
+['Corazon espinado',"Mana - Santana","mana-CorazonEspinado.mp3","manaSantana.jpg","4:36"],
+['Todo a pulmon',"Alejandro Lerner","AlejandroLerner-Todo a Pulmon.mp3","alejandroLerner.jpg","5:10"],
+["La gota fria","carlosVives","carlosVives-Lagotafria.mp3","laGotaFriaCarlosVives.jpg","3:29"],
+["Sin Documento","Los Rodriguez","LOSRODRIGUEZ-SIN DOCUMENTOS.mp3","los-rodriguez-sin-documentos.jpg","4:46"]
 ];
 
 
