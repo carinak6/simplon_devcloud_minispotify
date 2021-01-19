@@ -12,7 +12,8 @@ listeChanson=[
 ['Corazon espinado',"Mana - Santana","mana-CorazonEspinado.mp3","manaSantana.jpg","4:36"],
 ['Todo a pulmon',"Alejandro Lerner","AlejandroLerner-Todo a Pulmon.mp3","alejandroLerner.jpg","5:10"],
 ["La gota fria","carlosVives","carlosVives-Lagotafria.mp3","laGotaFriaCarlosVives.jpg","3:29"],
-["Sin Documento","Los Rodriguez","LOSRODRIGUEZ-SIN DOCUMENTOS.mp3","los-rodriguez-sin-documentos.jpg","4:46"]
+["Sin Documento","Los Rodriguez","LOSRODRIGUEZ-SIN DOCUMENTOS.mp3","los-rodriguez-sin-documentos.jpg","4:46"],
+["La pachanga","Vilma Palma e Vampiros","VilmaPalmaYVampiros-LaPachanga.mp3","lapachanga.jpg","4:37"]
 ];
 
 
