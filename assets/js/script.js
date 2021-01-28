@@ -16,6 +16,8 @@ listeChanson=[
 ["La pachanga","Vilma Palma e Vampiros","VilmaPalmaYVampiros-LaPachanga.mp3","lapachanga.jpg","4:37"]
 ];
 
+indiceActuel = 0;//pour savoir quelle chanson joue actuelement
+nro = 0
 
 /************ generation de liste des chanson  dynamiquement **************/
 //on capte la balise table                       
@@ -30,26 +32,26 @@ for(let i = 0 ; i < listeChanson.length; i++){
     
     listeMusique += "<tr> <td class='nro' >"+ (i+1) +"</td><td class='coeur'><i class=\"far fa-heart\"></i></td><td class='chanson titre'>"+listeChanson[i][0]+"</td><td class='play'><i class='fas fa-play-circle'></i></td><td class='artiste'>"+ listeChanson[i][1]+ "</td><td class='temps'>"+ listeChanson[i][4]+ "</td></tr>";
 }
-console.log(listeMusique)
-//on ajoute la variable avec les LI dans la balise UL#listeMusique
+//console.log(listeMusique)
+//on ajoute la variable dans la balise table#listeMusique
 listeChansons.innerHTML += "<tr><th class='nro'>#</th><th class='coeur'></th><th class='titre'>Titre</th><th class='play'></th><th class='artiste'>Artiste</th><th class='temps'><i class=\"fas fa-stopwatch\"></i></th></tr><tbody>"+ listeMusique +'</tbody>';
 
-
-/************* des label avec les chansons ****************/
-//on capte toutes les balises li crée anteriorment
+/************* les label avec les chansons ****************/
+//on capte toutes les celules td crée anteriorment
 listLabel= document.querySelectorAll(".chanson");
-console.log(listLabel);
+//console.log(listLabel);
 
-//on parcours tous les labels dans li et on lui applique l'evenement click pour chaque
-//for(let x in listLi){//x c est le item ou index de l'array, c est plutot pour les objet
-listLabel.forEach((valeur, index)=>{
-    console.log(index);
-    console.log(valeur);
+//**************** Ajouter le Play à chaque td du titre de la chanson ************************
+//on parcours tous les celules td de la table et on lui applique l'evenement click pour chaque
+listLabel.forEach((valeur, index)=>{ 
 
-    //j applique à chaque label l'event click
+    //j applique à chaque td l'event click
     valeur.addEventListener("click", function(){ 
-        changerCouleur(this);
-        //console.log(this);
+
+        indiceActuel = index; //pour manipuler une lecture continue        
+        
+        changerCouleur(this);    
+
         jouerChanson(listeChanson[index][2],listeChanson[index][3]);//j'appele la function jouer avec le paramettres
     });
    
@@ -60,11 +62,10 @@ listLabel.forEach((valeur, index)=>{
 listCoeur= document.querySelectorAll(".fa-heart");
 //on parcours tous les labels dans li et on lui applique l'evenement click pour chaque
 listCoeur.forEach((valeur, index)=>{
-    console.log(index);
-    console.log(valeur);
-
+ 
     //j applique à chaque icon l'event click pour changer sa class et par ende l image
     valeur.addEventListener("click", function(elem){ 
+        
         console.log(elem.target);
         if(elem.target.className == 'fas fa-heart' ){
             elem.target.setAttribute('class','far fa-heart')
@@ -77,28 +78,25 @@ listCoeur.forEach((valeur, index)=>{
 });
 
 
-/*************** Gestion des Plays ****************/
+/*************** Ajouter le Play au chaque icone play  ****************/
 listPlays= document.querySelectorAll(".fa-play-circle");
 //on parcours tous les labels dans li et on lui applique l'evenement click pour chaque
-listPlays.forEach((valeur, index)=>{
-    console.log(index);
-    console.log(valeur);
+listPlays.forEach((valeur, index)=>{   
 
     //j applique à chaque icon l'event click pour changer sa class et par ende l image
     valeur.addEventListener("click", function(elem){ //element c est l objet MouseEvent
         console.log(elem.target);//element clique avec le .target je peut le capter
         if(elem.target.className == 'fas fa-play-circle' ){
             elem.target.setAttribute('class','far fa-play-circle');
-            let nro=elem.target.parentNode.parentNode.children[0].innerHTML;//je reçois le premier element fils de la ligne tr, c est le nro
-            console.log(nro);
+
+            nro = parseInt(elem.target.parentNode.parentNode.children[0].innerHTML);//je reçois le premier element fils de la ligne tr, c est le nro
+            
             document.querySelectorAll(".chanson")[nro-1].click();//je declanche le clique sur le titre de la chanson
         }else{
             elem.target.setAttribute('class','fas fa-play-circle');
             
         }
-        
-       /*TO DO : continuer avec l evenement clique sur les play que soit desactivé dans les autres*/
-        
+
     });
    
 });
@@ -108,6 +106,7 @@ listPlays.forEach((valeur, index)=>{
  * function qui joue la musique
  */
 function jouerChanson(chanson, imgChanteur) {
+
 
     document.querySelector("section>img").setAttribute('src','./assets/images/'+imgChanteur)
     document.querySelector("#boutonPlay").pause();
@@ -119,11 +118,31 @@ function jouerChanson(chanson, imgChanteur) {
 
     //il joue la musique
     document.querySelector("#boutonPlay").play();
+    //document.querySelector("#boutonPlay").loop = true; //ça marche pas
+   //La méthode load () recharge l'élément audio / vidéo. après avoir changé la source ou d'autres paramètres
+   //console.log( document.querySelector("#boutonPlay").audioTracks) // undefined
+
+   
 }
+
+document.querySelector("#boutonPlay").addEventListener("ended", function(){
+    console.log('c est fini');
+    indiceActuel++;
+    //console.log('indiceActuel', indiceActuel);
+    console.log('prochaine chanson ',indiceActuel);
+    console.log('nro', nro);
+    nro--;
+    document.querySelectorAll(".chanson")[indiceActuel].click();//je declanche le clique sur le titre de la chanson
+
+    
+
+    /* this.currentTime = 0;
+    this.play(); */
+}, false)
 
 
 /*
-* change le couleur de liste avec chaque click 
+* **********change le couleur de liste avec chaque click et modifie l icon play ************
 */
 function changerCouleur(itemChoisie) {    
     
@@ -137,7 +156,15 @@ function changerCouleur(itemChoisie) {
         element.style.backgroundColor="";
     });
     
-    //je modifie le background selectionné
-    itemChoisie.parentNode.style.backgroundColor ='rgb(88, 168, 175)';
+    //je capte le node parent 
+    objParent=itemChoisie.parentNode;
 
+    //je modifie le background du parent
+    objParent.style.backgroundColor ='rgb(88, 168, 175)';
+
+    //je modifie le icon de la celule .play en ciblant son fils node
+    // et maintenant on pourra savoir quel chanson on a deja ecouté
+    objParent.querySelector('.play').childNodes[0].setAttribute('class','far fa-play-circle');
+
+    
 }
