@@ -17,7 +17,6 @@ listeChanson=[
 ];
 
 indiceActuel = 0;//pour savoir quelle chanson joue actuelement
-nro = 0
 
 /************ generation de liste des chanson  dynamiquement **************/
 //on capte la balise table                       
@@ -32,7 +31,8 @@ for(let i = 0 ; i < listeChanson.length; i++){
     
     listeMusique += "<tr> <td class='nro' >"+ (i+1) +"</td><td class='coeur'><i class=\"far fa-heart\"></i></td><td class='chanson titre'>"+listeChanson[i][0]+"</td><td class='play'><i class='fas fa-play-circle'></i></td><td class='artiste'>"+ listeChanson[i][1]+ "</td><td class='temps'>"+ listeChanson[i][4]+ "</td></tr>";
 }
-//console.log(listeMusique)
+
+
 //on ajoute la variable dans la balise table#listeMusique
 listeChansons.innerHTML += "<tr><th class='nro'>#</th><th class='coeur'></th><th class='titre'>Titre</th><th class='play'></th><th class='artiste'>Artiste</th><th class='temps'><i class=\"fas fa-stopwatch\"></i></th></tr><tbody>"+ listeMusique +'</tbody>';
 
@@ -49,7 +49,8 @@ listLabel.forEach((valeur, index)=>{
     valeur.addEventListener("click", function(){ 
 
         indiceActuel = index; //pour manipuler une lecture continue        
-        
+        console.log('indiceActuel', indiceActuel);  
+
         changerCouleur(this);    
 
         jouerChanson(listeChanson[index][2],listeChanson[index][3]);//j'appele la function jouer avec le paramettres
@@ -65,8 +66,7 @@ listCoeur.forEach((valeur, index)=>{
  
     //j applique à chaque icon l'event click pour changer sa class et par ende l image
     valeur.addEventListener("click", function(elem){ 
-        
-        console.log(elem.target);
+                
         if(elem.target.className == 'fas fa-heart' ){
             elem.target.setAttribute('class','far fa-heart')
         }else{
@@ -103,7 +103,7 @@ listPlays.forEach((valeur, index)=>{
 
 
 /**
- * function qui joue la musique
+ * *************function qui joue la musique **********************
  */
 function jouerChanson(chanson, imgChanteur) {
 
@@ -118,26 +118,23 @@ function jouerChanson(chanson, imgChanteur) {
 
     //il joue la musique
     document.querySelector("#boutonPlay").play();
-    //document.querySelector("#boutonPlay").loop = true; //ça marche pas
-   //La méthode load () recharge l'élément audio / vidéo. après avoir changé la source ou d'autres paramètres
-   //console.log( document.querySelector("#boutonPlay").audioTracks) // undefined
-
+   
    
 }
 
+/**
+ * ***********Evenement qui Renvoie si la lecture de l'audio / vidéo est terminée ou non *********
+ */
 document.querySelector("#boutonPlay").addEventListener("ended", function(){
-    console.log('c est fini');
-    indiceActuel++;
-    //console.log('indiceActuel', indiceActuel);
-    console.log('prochaine chanson ',indiceActuel);
-    console.log('nro', nro);
-    nro--;
-    document.querySelectorAll(".chanson")[indiceActuel].click();//je declanche le clique sur le titre de la chanson
-
     
-
-    /* this.currentTime = 0;
-    this.play(); */
+    indiceActuel++; 
+    /* je verifie si la derniere chanson est fini et apres le indiceActuel passe à 0 pour revenir */
+    if(indiceActuel == listeChanson.length){
+        indiceActuel = 0;
+    }
+    console.log('indiceActuel apres', indiceActuel);
+    document.querySelectorAll(".chanson")[indiceActuel].click();//je declanche le clique sur le titre de la chanson
+ 
 }, false)
 
 
