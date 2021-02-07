@@ -165,3 +165,36 @@ function changerCouleur(itemChoisie) {
 
     
 }
+/* Quand on clique sur le bouton Play on declenche le clique de lapremier chanson 
+*/
+document.querySelector("#avant").addEventListener("click",function(){
+    if(indiceActuel == 0){
+        indiceActuel;
+    }else{
+        indiceActuel--;
+    }
+    listLabel[indiceActuel].click();
+    
+})
+
+/* Quand on clique sur le bouton Play on declenche le clique de lapremier chanson 
+*/
+document.querySelector("#playZero").addEventListener("click",function(){
+    indiceActuel=0
+    listLabel[indiceActuel].click();
+    
+})
+
+/* Quand on clique sur le bouton Play on declenche le clique de lapremier chanson 
+*/
+document.querySelector("#suivant").addEventListener("click",function(){
+
+    if((listeChanson.length -1) == indiceActuel){
+        indiceActuel;        
+    }else{
+        
+        indiceActuel++; 
+    }
+    listLabel[indiceActuel].click();
+    
+})
